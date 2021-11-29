@@ -1,4 +1,6 @@
 #pragma once
+#include "Tools.h"
+
 #include <vector>
 
 typedef unsigned long long LINT;
@@ -33,10 +35,6 @@ public:
    void printValues();
 
 private:
-   bool  checkPrimeNumber(LINT& number);
-   bool  checkCoprimeNumbers(LINT x, LINT y);
-   LINT  primeNumber();
-   LINT  coprimeNumber(LINT& n);
    void  printTestResult(bool result, const char* text);
    void  clear();
    void  calcPokerX();

@@ -21,9 +21,21 @@
     <ClCompile Include="BBS.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Shamir.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Tools.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BBS.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Shamir.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Tools.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

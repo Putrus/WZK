@@ -1,4 +1,5 @@
 #include "BBS.h"
+#include "Tools.h"
 
 #include <Windows.h>
 #include <iostream>
@@ -17,12 +18,11 @@ BBS::BBS(bool print) {
 void BBS::generate(bool print) {
    clear();
    srand(time(NULL));
-   LINT p = primeNumber();
-   LINT q = primeNumber();
+   LINT p = static_cast<LINT>(tools::primeNumberModulo(1, 1000, 4, 3));
+   LINT q = static_cast<LINT>(tools::primeNumberModulo(1, 1000, 4, 3));
    LINT N = p * q;
-   LINT x = coprimeNumber(N);
-
-   
+   int Nint = static_cast<int>(N);
+   LINT x = static_cast<LINT>(tools::coprimeNumber(Nint));
 
    elements.push_back((x * x) % N);
    bits.push_back(elements[0] & 1);
@@ -119,57 +119,6 @@ void BBS::printValues() {
    }
    std::cout << "MaxSeries = " << maxSeries << std::endl;
    std::cout << "Poker x = " << pokerX << std::endl;
-}
-
-bool BBS::checkPrimeNumber(LINT& number) {
-   LINT counter = 0;
-   for (LINT i = 1; i <= number; ++i) {
-      if (number % i == 0) {
-         ++counter;
-      }
-      if (counter > 2) {
-         return false;
-      }
-   }
-   return true;
-}
-
-bool BBS::checkCoprimeNumbers(LINT x, LINT y) {
-   while (x != y) {
-      if (x > y) {
-         x -= y;
-      }
-      else {
-         y -= x;
-      }
-   }
-   if (x != 1) {
-      return false;
-   }
-   return true;
-}
-
-//prime number which n % 4 == 3;
-LINT BBS::primeNumber() {
-   LINT n = 0;
-   while (n == 0) {
-      n = rand() % 1000;
-   }
-   while (!checkPrimeNumber(n) || n % 4 != 3) {
-      ++n;
-   }
-   return n;
-}
-
-LINT BBS::coprimeNumber(LINT& n) {
-   LINT x = 0;
-   while (x == 0) {
-      x = rand() % 1000;
-   }
-   while (!checkCoprimeNumbers(n, x)) {
-      ++x;
-   }
-   return x;
 }
 
 void  BBS::printTestResult(bool result, const char* text) {

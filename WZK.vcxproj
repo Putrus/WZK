@@ -141,9 +141,13 @@
   <ItemGroup>
     <ClCompile Include="BBS.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Shamir.cpp" />
+    <ClCompile Include="Tools.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BBS.h" />
+    <ClInclude Include="Shamir.h" />
+    <ClInclude Include="Tools.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
