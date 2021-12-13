@@ -6,9 +6,8 @@
 shamir::Encoder::Encoder(int t, int n, int s) : t(t), n(n), s(s), p(0){}
 
 void shamir::Encoder::encode() {
-   srand(static_cast<unsigned int>(time(NULL)));
    pairs.clear();
-   p = tools::primeNumber(std::max(s, n), 3000);
+   p = tools::primeNumber(std::max(s, n), 2 * std::max(s, n));
    std::vector<int> a;
    for (int i = 0; i < t - 1; ++i) {
       a.push_back(tools::randomInt(1, s));
@@ -32,16 +31,19 @@ int shamir::Encoder::getP() {
    return p;
 }
 
-int shamir::Decoder::decode(std::vector<int> pairs, int p) {
+int shamir::Decoder::decode(std::vector<int> pairs, int p, int t) {
    int sum = 0;
-   for (size_t i = 1; i <= 3; ++i) {
-      auto f = lagrangeConstant(i, pairs.size());
+   for (size_t i = 1; i <= t; ++i) {
+      auto f = lagrangeConstant(i, t);
       int c = f.n * pairs[i - 1] / f.d;
-      bool negative = c < 0;
-      while (c < 0) {
-         c += p;
-      }
-      sum += (negative) ? (c - p) : (c % p);
+      sum += c % p;
+   }
+
+   if (sum < 0) {
+      sum += p;
+   }
+   if (sum > p) {
+      sum = sum % p;
    }
    return sum;
 }
@@ -49,7 +51,7 @@ int shamir::Decoder::decode(std::vector<int> pairs, int p) {
 tools::Fraction shamir::Decoder::lagrangeConstant(int x, int t) {
    int numerator = 1;
    int denominator = 1;
-   for (int i = 1; i <= 3; ++i) {
+   for (int i = 1; i <= t; ++i) {
       if (i != x) {
          numerator *= (-i);
          denominator *= (x - i);

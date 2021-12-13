@@ -18,11 +18,11 @@ BBS::BBS(bool print) {
 void BBS::generate(bool print) {
    clear();
    srand(time(NULL));
-   LINT p = static_cast<LINT>(tools::primeNumberModulo(1, 1000, 4, 3));
-   LINT q = static_cast<LINT>(tools::primeNumberModulo(1, 1000, 4, 3));
-   LINT N = p * q;
+   p = static_cast<LINT>(tools::primeNumberModulo(1000, 9999, 4, 3));
+   q = static_cast<LINT>(tools::primeNumberModulo(1000, 9999, 4, 3));
+   N = p * q;
    int Nint = static_cast<int>(N);
-   LINT x = static_cast<LINT>(tools::coprimeNumber(Nint));
+   x = static_cast<LINT>(tools::coprimeNumber(Nint));
 
    elements.push_back((x * x) % N);
    bits.push_back(elements[0] & 1);

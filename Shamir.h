@@ -28,7 +28,7 @@ namespace shamir {
    private:
 
    public:
-      int decode(std::vector<int> pairs, int p);
+      int decode(std::vector<int> pairs, int p, int t);
    private:
       tools::Fraction lagrangeConstant(int x, int t);
    };
