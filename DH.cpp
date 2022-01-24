@@ -26,7 +26,7 @@ void DH::calculate() {
    std::cout << "Klucz sesji B, k = " << kb << std::endl;
 }
 
-int DH::primRoot(int number) {
+int DH::primeRoot(int number) {
    std::vector<int> roots;
    for (double i = 0; i < number; ++i) {
       for (double p = 1; p < number; ++p) {

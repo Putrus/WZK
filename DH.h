@@ -4,6 +4,6 @@ class DH {
 public:
    void calculate();
 
-   int primRoot(int number);
+   int primeRoot(int number);
    //to do nie dziala ta klasa
 };
