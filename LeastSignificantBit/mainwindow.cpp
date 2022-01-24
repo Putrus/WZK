@@ -42,29 +42,32 @@ void MainWindow::onStartButtonClicked()
     std::string txt = ui->textEdit->displayText().toStdString();
     auto bits = stringToBooleanVec(txt);
 
-
-
     int x = 0;
     int y = 0;
     cv::Mat imageAfter;
     cv::resize(image, imageAfter, cv::Size(400, 400), cv::INTER_LINEAR);
+    cv::Mat imageBefore;
+    cv::resize(image, imageBefore, cv::Size(400, 400), cv::INTER_LINEAR);
     for(int i = 0;i < IMAGE_SIZE; ++i){
         for(int j = 0;j < IMAGE_SIZE; ++j){
             auto pixel = imageAfter.at<cv::Vec3b>(i, j);
-            if(x == 7){
+            if(x == 8){
                 ++y;
+                x = 0;
             }
             y %= bits.size();
             int r = pixel.val[0] + leastBitAnd(pixel.val[0], bits[y][x]);
             ++x;
-            if(x == 7){
+            if(x == 8){
                 ++y;
+                x = 0;
             }
             y %= bits.size();
             int g = pixel.val[1] + leastBitAnd(pixel.val[1], bits[y][x]);
             ++x;
-            if(x == 7){
+            if(x == 8){
                 ++y;
+                x = 0;
             }
             y %= bits.size();
             int b = pixel.val[2] + leastBitAnd(pixel.val[2], bits[y][x]);
@@ -74,6 +77,16 @@ void MainWindow::onStartButtonClicked()
     }
 
     ui->imageAfter->setPixmap(cvMatToQPixmap(imageAfter));
+    for(int i = 0;i < 10; ++i){
+        for(int j = 0; j < 10; ++j){
+            if(imageAfter.at<cv::Vec3b>(i,j).val[1] != imageBefore.at<cv::Vec3b>(i,j).val[1]){
+                qDebug() << "Image[" << i <<"]" << "[" << j << "].green after" << imageAfter.at<cv::Vec3b>(i,j).val[1] ;
+                qDebug() << "Image[" << i <<"]" << "[" << j << "].green before" << imageBefore.at<cv::Vec3b>(i,j).val[1] ;
+                qDebug() << "-------------------------------------------------------------------------------------";
+            }
+        }
+    }
+
 
 }
 

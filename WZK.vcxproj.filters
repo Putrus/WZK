@@ -30,6 +30,12 @@
     <ClCompile Include="VC.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="DH.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RSA.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BBS.h">
@@ -42,6 +48,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="VC.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DH.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RSA.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -140,13 +140,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BBS.cpp" />
+    <ClCompile Include="DH.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="RSA.cpp" />
     <ClCompile Include="Shamir.cpp" />
     <ClCompile Include="Tools.cpp" />
     <ClCompile Include="VC.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BBS.h" />
+    <ClInclude Include="DH.h" />
+    <ClInclude Include="RSA.h" />
     <ClInclude Include="Shamir.h" />
     <ClInclude Include="Tools.h" />
     <ClInclude Include="VC.h" />
