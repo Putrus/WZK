@@ -33,8 +33,8 @@ class DH:
         Y = int(pow(g,y,n)) 
         ka = int(pow(Y,x,n))
         kb = int(pow(X,y,n))
-        print('Klucz sesji a, k = %d'%(ka))
-        print('Klucz sesji b, k = %d'%(kb))
+        print('Klucz sesji A, k = %d'%(ka))
+        print('Klucz sesji B, k = %d'%(kb))
 
 class RSA: 
     def calculate(self):
